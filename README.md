@@ -15,3 +15,12 @@ https://trello.com/b/1g3hFma0/
 - CONTE Nunzio ([NunzioArdi](https://github.com/Eoloc/MyWishList.app/commits?author=NunzioArdi))
 - 
 - 
+
+## Installation
+
+### Environnement
+
+| Programme | Version |
+| :----: | --- |
+| PHP | 7.0.33 |
+| MySQL | min 5.0.12 |
