@@ -1,15 +1,13 @@
-<?php
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My WishList</title>
+</head>
+<body>
+    <p><a href="test.php" target="_self">Page de test</a></p>
 
-require_once './src/classes/DB.php';
-
-$db = new DB('./src/core/db.config.ini');
-
-$db->makeConnection();
-$db->makeQuery('SELECT * FROM item');
-$stmt = $db->getResult();
-$stmt->execute();
-
-foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
-	print_r($row); echo '<br>';
-}
-?>
+</body>
+</html>

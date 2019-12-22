@@ -5,4 +5,5 @@
 /.idea/
 .class
 /.vs/
-/core/db.config.ini
+core/db.config.ini
+composer.lock
