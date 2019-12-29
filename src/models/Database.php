@@ -3,7 +3,7 @@
 namespace wishlist\models;
 use Illuminate\Database\Capsule\Manager as DB;
 
-Class DataBase {
+Class Database {
 
     public static function connect(){
         $bddConfig = parse_ini_file('src/core/db.config.ini');
@@ -11,12 +11,12 @@ Class DataBase {
         $db = new DB();
         $db->addConnection( [
             'driver'    => $bddConfig['driver'],
-            'host'      => $bddConfig['host'],
-            'database'  => $bddConfig['database'],
             'username'  => $bddConfig['username'],
             'password'  => $bddConfig['password'],
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'host'      => $bddConfig['host'],
+            'database'  => $bddConfig['database'],
+            'charset'   => $bddConfig['charset'],
+            'collation' => $bddConfig['collation'],
             'prefix'    => ''
         ] );
         $db->setAsGlobal();
