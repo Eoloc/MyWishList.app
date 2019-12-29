@@ -7,3 +7,4 @@
 /.vs/
 core/db.config.ini
 composer.lock
+/vendor/

@@ -22,5 +22,5 @@ https://trello.com/b/1g3hFma0/
 
 | Programme | Version |
 | :----: | --- |
-| PHP | 7.0.33 |
+| PHP | 7.0.00 |
 | MySQL | min 5.0.12 |
