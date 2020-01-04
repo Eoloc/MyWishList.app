@@ -7,7 +7,60 @@
     <title>My WishList</title>
 </head>
 <body>
-    <p><a href="test.php" target="_self">Page de test</a></p>
+    <?php
+    session_start();
+
+    use Slim\App;
+    use wishlist\controllers\ListController;
+    use wishlist\controllers\PagesController;
+    use wishlist\models\Database;
+    use \Psr\Http\Message\ServerRequestInterface as Request;
+    use \Psr\Http\Message\ResponseInterface as Response;
+
+    require_once 'vendor/autoload.php';
+
+    Database::connect();
+
+    //Important pour l'execution de sliim et pour afficher les erreurs(pour le dev)
+    $config = ['settings' => [
+        'addContentLengthHeader' => false,
+        'displayErrorDetails' => true,
+    ]];
+    $app = new App($config);
+    $container = $app->getContainer();
+
+    //TODO personnalisé le notFound
+    $container['notFoundHandler'] = function ($container) {
+        return function (Request $request, Response $response) {
+            return $response->withStatus(404)
+                ->withHeader('Content-Type', 'text/html')
+                ->write('Page not found');
+        };
+    };
+
+
+    $app->get('/', function (Request $request, Response $response, array $args) {
+        $cont = new PagesController();
+        $cont->index();
+    });
+
+
+
+    //Lien pour afficher toutes les listes
+
+    $app->get('/liste/', function (Request $request, Response $response, array $args) {
+        $cont = new ListController();
+        $cont->showAll();
+    });
+    //Execution
+    try {
+        $app->run();
+    } catch (Throwable $e) {
+        echo "<pre>$e</pre>";
+    }
+
+
+    ?>
 
 </body>
 </html>
