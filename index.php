@@ -42,16 +42,17 @@
     $app->get('/', function (Request $request, Response $response, array $args) {
         $cont = new PagesController();
         $cont->index();
-    });
-
-
-
-    //Lien pour afficher toutes les listes
-
-    $app->get('/liste/', function (Request $request, Response $response, array $args) {
+    })->setName('index');
+    
+    $app->get('/liste', function (Request $request, Response $response, array $args) {
         $cont = new ListController();
         $cont->showAll();
-    });
+    })->setName('list.all');
+
+    $app->get('/liste/{token}', function (Request $request, Response $response, array $args) {
+        $cont = new ListController();
+        $cont->showList($args[token]);
+    })->setName('list.token');
     //Execution
     try {
         $app->run();

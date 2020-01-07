@@ -20,4 +20,12 @@ class ListController
         $vue->views('showAll');
     }
 
+    public function showList($token)
+    {
+        $l = Liste::select('*')->where('token', '=', "$token")->get();
+        $arr = json_decode($l);
+        $vue = new ListView($arr);
+        $vue->views('showList');
+    }
+
 }
