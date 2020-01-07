@@ -21,7 +21,7 @@
 
     Database::connect();
 
-    //Important pour l'execution de sliim et pour afficher les erreurs(pour le dev)
+    //Important pour l'execution de slim et pour afficher les erreurs(pour le dev)
     $config = ['settings' => [
         'addContentLengthHeader' => false,
         'displayErrorDetails' => true,

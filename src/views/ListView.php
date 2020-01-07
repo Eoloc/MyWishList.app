@@ -9,10 +9,10 @@ class ListView extends View
 
     public function views(string $view)
     {
-        switch ($view){
+        switch ($view) {
             case 'showAll';
-            $this->showAll();
-            break;
+                $this->showAll();
+                break;
         }
     }
 
@@ -35,15 +35,11 @@ class ListView extends View
             </tr>
             </thead>
             <tbody>\n ";
-        foreach ($this->res as $liste){
+        foreach ($this->res as $liste) {
             echo "            <tr>\n";
-            foreach ($liste as $row){
+            foreach ($liste as $row) {
                 echo "                <td>$row</td>\n";
             }
-            echo "            </tr>\n";
         }
-        echo "            </tbody>
-        </table>
-    </div>";
     }
 }
