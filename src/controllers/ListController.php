@@ -4,6 +4,7 @@
 namespace wishlist\controllers;
 use Slim\App;
 use wishlist\models\Liste;
+use wishlist\models\Item;
 use wishlist\views\ListView;
 
 /**
@@ -23,7 +24,11 @@ class ListController
     public function showList($token)
     {
         $l = Liste::select('*')->where('token', '=', "$token")->get();
-        $arr = json_decode($l);
+        $l = json_decode($l);
+        $items = Item::select('*')->where('liste_id', '=', $l[0]->no)->get();
+        $items = json_decode($items);
+        array_push($l, $items);
+        $arr = $l;
         $vue = new ListView($arr);
         $vue->views('showList');
     }

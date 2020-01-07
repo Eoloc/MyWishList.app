@@ -51,7 +51,7 @@
 
     $app->get('/liste/{token}', function (Request $request, Response $response, array $args) {
         $cont = new ListController();
-        $cont->showList($args[token]);
+        $cont->showList($args['token']);
     })->setName('list.token');
     //Execution
     try {
