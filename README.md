@@ -13,10 +13,13 @@ https://trello.com/b/1g3hFma0/
 
 - SOUSA Alexandre ([Eoloc](https://github.com/Eoloc/MyWishList.app/commits?author=Eoloc))
 - CONTE Nunzio ([NunzioArdi](https://github.com/Eoloc/MyWishList.app/commits?author=NunzioArdi))
-- 
-- 
+- MATHIEU Jean
+- JIN Liyao
 
 ## Installation
+
+Copier le fichier db.config_template.ini dans src/core en le renommant db.config.ini et en remplissant les champs
+pour se connecter a la base 
 
 ### Environnement
 
