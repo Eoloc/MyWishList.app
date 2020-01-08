@@ -13,7 +13,7 @@ https://trello.com/b/1g3hFma0/
 
 - SOUSA Alexandre ([Eoloc](https://github.com/Eoloc/MyWishList.app/commits?author=Eoloc))
 - CONTE Nunzio ([NunzioArdi](https://github.com/Eoloc/MyWishList.app/commits?author=NunzioArdi))
-- MATHIEU Jean
+- MATHIEU Jean ([Kyouis](https://github.com/Eoloc/MyWishList.app/commits?author=Kyouis))
 - JIN Liyao
 
 ## Installation

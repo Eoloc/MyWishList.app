@@ -5,6 +5,6 @@
 /.idea/
 .class
 /.vs/
-/core/db.config.ini
+src/core/db.config.ini
 composer.lock
 /vendor/
