@@ -2,7 +2,8 @@
     "require": {
         "illuminate/database": "5.5.*",
         "slim/slim": "3.*",
-        "php": ">=7.0.00"
+        "php": ">=7.0.00",
+        "ext-fileinfo": "*"
     },
     "autoload": {
         "psr-4": {

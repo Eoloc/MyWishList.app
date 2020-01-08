@@ -31,21 +31,13 @@ class ListView extends View
         <table border=\"2\">
             <thead>
             <tr>
-                <th>no</th>
-                <th>user_id</th>
                 <th>titre</th>
                 <th>description</th>
-                <th>expiration</th>
-                <th>token</th>
             </tr>
             </thead>
             <tbody>\n ";
         foreach ($this->res as $liste) {
-            echo "            <tr>\n";
-            foreach ($liste as $row) {
-                echo "                <td>$row</td>\n";
-            }
-            echo "            </tr>\n";
+            echo "<tr>\n<td><a href='/liste/$liste->token'>$liste->titre</a></td>\n<td>$liste->description</td>\n</tr>\n";
         }
         echo "            </tbody>
                </table>
@@ -57,63 +49,50 @@ class ListView extends View
      */
     private function showList()
     {
-        /**
-         * liste
-         */
+        //liste
         echo "
         <div>
         <table border=\"2\">
             <thead>
             <tr>
-                <th>no</th>
-                <th>user_id</th>
                 <th>titre</th>
                 <th>description</th>
-                <th>expiration</th>
-                <th>token</th>
             </tr>
             </thead>
             <tbody>\n ";
         $liste = $this->res[0];
         echo "            <tr>\n";
-        foreach ($liste as $row) {
-            echo "                <td>$row</td>\n";
-        }
+        echo "<tr>\n<td>$liste->titre</td>\n<td>$liste->description</td>\n</tr>\n";
+
         echo "            </tbody>
                </table>
          </div>";
 
-        /**
-         * liste d'item
-         */
+        // liste d'item
         $items = $this->res[1];
+        //<th>id</th>
+        //                <th>liste id</th>
         echo "
         <div>
         <table border=\"2\">
             <thead>
             <tr>
-                <th scope=\"col\">id</th>
-                <th scope=\"col\">liste id</th>
-                <th scope=\"col\">nom</th>
-                <th scope=\"col\">description</th>
-                <th scope=\"col\">image</th>
-                <th scope=\"col\">url</th>
-                <th scope=\"col\">tarif</th>
+                <th>nom</th>
+                <th>description</th>
+                <th>image</th>
+                <th>url</th>
+                <th>tarif</th>
             </tr>
             </thead>
             <tbody> ";
         foreach ($items as $item){
+            //echo "<pre>var_dump($item)</pre>";
             echo "<tr>";
-            $i = 0;
-            foreach ($item as $row){
-                if($i == 4){
-                    echo "<td><img src=\"src\img\\" . $row . "\" height=\"50\"/></td>";
-                }
-                else{
-                    echo "<td>$row</td>";
-                }
-                $i += 1;
-            }
+            echo "<td>$item->nom</td>\n";
+            echo "<td>$item->descr</td>\n";
+            echo "<td><img src=\"\\img\\" .$item->img."\" height=\"50\"/></td>\n";
+            echo "<td>$item->url</td>\n";
+            echo "<td>$item->tarif</td>\n";
             echo "</tr>";
         }
         echo "</tbody>
