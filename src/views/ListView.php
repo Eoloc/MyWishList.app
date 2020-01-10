@@ -13,10 +13,10 @@ class ListView extends View
             case 'showAll';
                 $this->showAll();
                 break;
-        }
-        switch ($view) {
             case 'showList';
                 $this->showList();
+                break;
+            default:
                 break;
         }
     }
@@ -88,7 +88,7 @@ class ListView extends View
         foreach ($items as $item){
             //echo "<pre>var_dump($item)</pre>";
             echo "<tr>";
-            echo "<td>$item->nom</td>\n";
+            echo "<td><a href='/item/$item->id'>$item->nom</a></td>\n";
             echo "<td>$item->descr</td>\n";
             echo "<td><img src=\"\\img\\" .$item->img."\" height=\"50\"/></td>\n";
             echo "<td>$item->url</td>\n";
