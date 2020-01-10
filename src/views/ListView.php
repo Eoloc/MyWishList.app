@@ -37,7 +37,7 @@ class ListView extends View
             </thead>
             <tbody>\n ";
         foreach ($this->res as $liste) {
-            echo "<tr>\n<td><a href='/liste/$liste->token'>$liste->titre</a></td>\n<td>$liste->description</td>\n</tr>\n";
+            echo "<tr>\n<td><a href='/list/$liste->token'>$liste->titre</a></td>\n<td>$liste->description</td>\n</tr>\n";
         }
         echo "            </tbody>
                </table>
@@ -78,9 +78,7 @@ class ListView extends View
             <thead>
             <tr>
                 <th>nom</th>
-                <th>description</th>
                 <th>image</th>
-                <th>url</th>
                 <th>tarif</th>
             </tr>
             </thead>
@@ -89,9 +87,7 @@ class ListView extends View
             //echo "<pre>var_dump($item)</pre>";
             echo "<tr>";
             echo "<td><a href='/item/$item->id'>$item->nom</a></td>\n";
-            echo "<td>$item->descr</td>\n";
             echo "<td><img src=\"\\img\\" .$item->img."\" height=\"50\"/></td>\n";
-            echo "<td>$item->url</td>\n";
             echo "<td>$item->tarif</td>\n";
             echo "</tr>";
         }

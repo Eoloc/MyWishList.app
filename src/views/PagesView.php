@@ -22,6 +22,6 @@ class PagesView extends View
 
     private function index(){
         echo "<p><a href=\"/test.php\" target=\"_self\">Page de test</a></p>";
-        echo "<a href=\"/liste/\">tableau de toutes les listes</a>";
+        echo "<a href=\"/list\">tableau de toutes les listes</a>";
     }
 }

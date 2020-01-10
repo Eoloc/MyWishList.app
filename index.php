@@ -2,7 +2,8 @@
     session_start();
 
     use Slim\App;
-    use wishlist\controllers\ListController;
+use wishlist\controllers\ItemController;
+use wishlist\controllers\ListController;
     use wishlist\controllers\PagesController;
     use wishlist\models\Database;
     use \Psr\Http\Message\ServerRequestInterface as Request;
@@ -48,15 +49,22 @@
         $cont->index();
     })->setName('index');
 
-    $app->get('/liste', function (Request $request, Response $response, array $args) {
+    $app->get('/list', function (Request $request, Response $response, array $args) {
         $cont = new ListController();
         $cont->showAll();
     })->setName('list.all');
 
-    $app->get('/liste/{token}', function (Request $request, Response $response, array $args) {
+    $app->get('/list/{token}', function (Request $request, Response $response, array $args) {
         $cont = new ListController();
         $cont->showList($args['token']);
     })->setName('list.token');
+
+    $app->get('/item/{id}', function (Request $request, Response $response, array $args) {
+        $cont = new ItemController();
+        $cont->showItem($args['id']);
+    })->setName('item.id');
+
+
     //Execution
     try {
         $app->run();
