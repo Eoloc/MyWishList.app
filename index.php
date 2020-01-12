@@ -42,8 +42,6 @@ use wishlist\controllers\ListController;
     })->setName('img');
 
 
-
-
     $app->get('/', function (Request $request, Response $response, array $args) {
         $cont = new PagesController();
         $cont->index();
@@ -63,6 +61,16 @@ use wishlist\controllers\ListController;
         $cont = new ItemController();
         $cont->showItem($args['id']);
     })->setName('item.id');
+
+    $app->get('/item/{id}/modify', function (Request $request, Response $response, array $args) {
+        $cont = new ItemController();
+        $cont->modifyItem($args['id']);
+    })->setName('item.id.modify');
+
+    $app->get('/item/{id}/reserve', function (Request $request, Response $response, array $args) {
+        $cont = new ItemController();
+        $cont->reserveItem($args['id']);
+    })->setName('item.id.reserve');
 
 
     //Execution

@@ -24,4 +24,20 @@ class ItemController
         $vue = new ItemView($i);
         $vue->views('showItem');
     }
+
+    public function modifyItem($id)
+    {
+        $i = Item::select('*')->where('id', '=', "$id")->get();
+        $i = json_decode($i);
+        $vue = new ItemView($i);
+        $vue->views('modifyItem');
+    }
+
+    public function reserveItem($id)
+    {
+        $i = Item::select('*')->where('id', '=', "$id")->get();
+        $i = json_decode($i);
+        $vue = new ItemView($i);
+        $vue->views('reserveItem');
+    }
 }

@@ -10,6 +10,5 @@ class Item extends Model{
 
     public function liste() {
         return $this->belongsTo('wishlist\models\Liste', 'liste_id');
-
     }
 }
