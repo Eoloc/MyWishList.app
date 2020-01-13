@@ -64,7 +64,7 @@ class ItemView extends View
         echo "
         <head>
             <meta charset=\"utf-8\">
-            <title>formulaire</title>
+            <title>formulaire modifier item</title>
             <form action=\"/item-attributs-php\" method=\"post\">
             <div>
                 <label for=\"name\">Nom :</label>
@@ -83,6 +83,7 @@ class ItemView extends View
                 <input type=\"text\" id=\"tarif\" name=\"item_tarif\">
              </div>
             <input type=\"button\" value=\"Modifier\">
+            <input type=\"button\" value=\"Modifier l'image\">
             <input type=\"button\" value=\"Annuler\">
             </form>
         </head>
@@ -94,6 +95,21 @@ class ItemView extends View
 
     private function reserveItem()
     {
-        // FORMULAIRE + INSERER DANS LA BDD
+        echo "
+        <head>
+            <meta charset=\"utf-8\">
+            <title>formulaire reserver item</title>
+            <form action=\"/item-attributs-php\" method=\"post\">
+            <div>
+                <label for=\"pseudo\">Pseudo :</label>
+                <input type=\"text\" id=\"pseudo\" name=\"pseudo\">
+            </div>
+            <input type=\"button\" value=\"Reserver\">
+            <input type=\"button\" value=\"Annuler\">
+            </form>
+        </head>
+        <body></body>
+        ";
+        //INSERER DANS LA BDD
     }
 }
