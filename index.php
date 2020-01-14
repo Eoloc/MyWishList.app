@@ -41,16 +41,16 @@
         return $response->withHeader('Content-Type', FILEINFO_MIME_TYPE);
     })->setName('img');
 
-$app->get('/css/{data}', function (Request $request, Response $response, array $args){
-    $data = $args['data'];
-    $style = @file_get_contents("src/$data");
-    if ($style === FALSE) {
-        $handler = $this->notFoundHandler;
-        return $handler($request, $response);
-    }
-    $response->write($style);
-    return $response->withHeader('Content-Type', FILEINFO_MIME_TYPE);
-})->setName('css');
+    $app->get('/css/{data}', function (Request $request, Response $response, array $args){
+        $data = $args['data'];
+        $style = @file_get_contents("src/$data");
+        if ($style === FALSE) {
+            $handler = $this->notFoundHandler;
+            return $handler($request, $response);
+        }
+        $response->write($style);
+        return $response->withHeader('Content-Type', FILEINFO_MIME_TYPE);
+    })->setName('css');
 
 
     $app->get('/', function (Request $request, Response $response, array $args) use ($app) {
@@ -62,6 +62,11 @@ $app->get('/css/{data}', function (Request $request, Response $response, array $
         $cont = new ListController($app);
         $cont->showAll();
     })->setName('list.all');
+
+    $app->get('/list/create', function (Request $request, Response $response, array $args) use ($app) {
+        $cont = new ListController($app);
+        $cont->createForm();
+    })->setName('list.createForm');
 
     $app->get('/list/{token}', function (Request $request, Response $response, array $args) use ($app) {
         $cont = new ListController($app);
@@ -88,10 +93,16 @@ $app->get('/css/{data}', function (Request $request, Response $response, array $
         $cont->showItem($args['id']);
     })->setName('item.id.reserve.valide');
 
-    $app->post('/item/{id}/reserve/valideReserve', function ($request, $response, $args) use ($app) {
+    $app->post('/item/{id}/reserve/valideReserve', function (Request $request, Response $response, $args) use ($app) {
         $cont = new ItemController($app);
         $cont->valideReserve($args['id']);
         return $response->withRedirect("http://" . $request->getUri()->getHost() . "/item/" . $args['id']);   // REDIRECTION
+    });
+
+    $app->post('/list/create/confirm', function (Request $request, Response $response, array $args) use ($app) {
+        $cont = new ListController($app);
+        $cont->confirmCreate($request);
+        return $response->withRedirect("http://" . $request->getUri()->getHost() . "/list");  // REDIRECTION
     });
 
 

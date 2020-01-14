@@ -2,6 +2,7 @@
 
 
 namespace wishlist\controllers;
+use \Psr\Http\Message\ServerRequestInterface as Request;
 use wishlist\models\Liste;
 use wishlist\models\Item;
 use wishlist\views\ListView;
@@ -30,6 +31,27 @@ class ListController extends Controller
         $arr = $l;
         $vue = new ListView($arr);
         $vue->views('showList');
+    }
+
+    public function createForm()
+    {
+        $vue = new ListView();
+        $vue->views('create');
+    }
+
+    public function confirmCreate(Request $request)
+    {
+        $name = $request->getParsedBody();
+        filter_var_array($name, FILTER_SANITIZE_SPECIAL_CHARS);
+            if ($name['title'] != null && $name['date'] != null) {
+                $r = new Liste();
+                $r->titre = $name['title'];
+                $r->description = $name['desc'];
+                $r->expiration = $name['date'];
+                $r->token = sha1(mt_rand(1, 90000) . 'SALT');
+                echo $r->token;
+                $r->save();
+            }
     }
 
 }
