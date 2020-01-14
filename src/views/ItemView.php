@@ -106,7 +106,7 @@ class ItemView extends View
         <div class=\"form-group\">
           <label class=\"col-md-4 control-label\" for=\"Pseudo\">Pseudo</label>  
           <div class=\"col-md-4\">
-          <input id=\"Pseudo\" name=\"Pseudo\" type=\"text\" placeholder=\"\" class=\"form-control input-md\" required=\"\">
+          <input id=\"pseudo\" name=\"pseudo\" type=\"text\" placeholder=\"\" class=\"form-control input-md\" required=\"\">
             
           </div>
         </div>
