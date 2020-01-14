@@ -32,5 +32,11 @@ class ItemController extends Controller
         $vue = new ItemView($i);
         $vue->views('reserveItem');
     }
-
+    
+    public function valideReserve($id)
+    {
+        $i = Item::select('*')->where('id', '=', "$id")->get();
+        $i = json_decode($i);
+        // BDD
+    }
 }

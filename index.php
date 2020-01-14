@@ -42,35 +42,46 @@ use wishlist\controllers\ListController;
     })->setName('img');
 
 
-    $app->get('/', function (Request $request, Response $response, array $args) {
-        $cont = new PagesController();
+    $app->get('/', function (Request $request, Response $response, array $args) use ($app) {
+        $cont = new PagesController($app);
         $cont->index();
     })->setName('index');
 
-    $app->get('/list', function (Request $request, Response $response, array $args) {
-        $cont = new ListController();
+    $app->get('/list', function (Request $request, Response $response, array $args) use ($app) {
+        $cont = new ListController($app);
         $cont->showAll();
     })->setName('list.all');
 
-    $app->get('/list/{token}', function (Request $request, Response $response, array $args) {
-        $cont = new ListController();
+    $app->get('/list/{token}', function (Request $request, Response $response, array $args) use ($app) {
+        $cont = new ListController($app);
         $cont->showList($args['token']);
     })->setName('list.token');
 
-    $app->get('/item/{id}', function (Request $request, Response $response, array $args) {
-        $cont = new ItemController();
+    $app->get('/item/{id}', function (Request $request, Response $response, array $args) use ($app) {
+        $cont = new ItemController($app);
         $cont->showItem($args['id']);
     })->setName('item.id');
 
-    $app->get('/item/{id}/modify', function (Request $request, Response $response, array $args) {
-        $cont = new ItemController();
+    $app->get('/item/{id}/modify', function (Request $request, Response $response, array $args) use ($app) {
+        $cont = new ItemController($app);
         $cont->modifyItem($args['id']);
     })->setName('item.id.modify');
 
-    $app->get('/item/{id}/reserve', function (Request $request, Response $response, array $args) {
-        $cont = new ItemController();
+    $app->get('/item/{id}/reserve', function (Request $request, Response $response, array $args) use ($app) {
+        $cont = new ItemController($app);
         $cont->reserveItem($args['id']);
     })->setName('item.id.reserve');
+
+    $app->get('/item/{id}/reserve/valideReserve', function (Request $request, Response $response, array $args) use ($app) {
+        $cont = new ItemController($app);
+        $cont->showItem($args['id']);
+    })->setName('item.id.reserve.valide');
+
+    $app->post('/item/{id}/reserve/valideReserve', function ($request, $response, $args) use ($app) {
+        $cont = new ItemController($app);
+        $cont->valideReserve($args['id']);
+        return $response->withRedirect("http://" . $request->getUri()->getHost() . "/item/" . $args['id']);   // REDIRECTION
+    });
 
 
     //Execution

@@ -96,19 +96,41 @@ class ItemView extends View
     private function reserveItem()
     {
         echo "
-        <head>
-            <meta charset=\"utf-8\">
-            <title>formulaire reserver item</title>
-            <form action=\"/item-attributs-php\" method=\"post\">
-            <div>
-                <label for=\"pseudo\">Pseudo :</label>
-                <input type=\"text\" id=\"pseudo\" name=\"pseudo\">
-            </div>
-            <input type=\"button\" value=\"Reserver\">
-            <input type=\"button\" value=\"Annuler\">
-            </form>
-        </head>
-        <body></body>
+        <form class=\"form-horizontal\" method=\"POST\" action='reserve/valideReserve'>
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend>Réservation</legend>
+        
+        <!-- Text input-->
+        <div class=\"form-group\">
+          <label class=\"col-md-4 control-label\" for=\"Pseudo\">Pseudo</label>  
+          <div class=\"col-md-4\">
+          <input id=\"Pseudo\" name=\"Pseudo\" type=\"text\" placeholder=\"\" class=\"form-control input-md\" required=\"\">
+            
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class=\"form-group\">
+          <label class=\"col-md-4 control-label\" for=\"message\">Message</label>  
+          <div class=\"col-md-4\">
+          <input id=\"message\" name=\"message\" type=\"text\" placeholder=\"\" class=\"form-control input-md\">
+            
+          </div>
+        </div>
+        
+        <!-- Button (Double) -->
+        <div class=\"form-group\">
+          <label class=\"col-md-4 control-label\" for=\"buttonreserver\"></label>
+          <div class=\"col-md-8\">
+            <button id=\"buttonreserver\" name=\"buttonreserver\" class=\"btn btn-success\">Réserver</button>
+            <button id=\"buttonreserverannuler\" name=\"buttonreserverannuler\" class=\"btn btn-danger\">Annuler</button>
+          </div>
+        </div>
+        
+        </fieldset>
+        </form>
         ";
         //INSERER DANS LA BDD
     }
