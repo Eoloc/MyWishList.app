@@ -3,7 +3,10 @@
 
 namespace wishlist\views;
 
-
+/**
+ * Affichage des listes
+ * @package wishlist\views
+ */
 class ListView extends View
 {
 
@@ -19,6 +22,7 @@ class ListView extends View
             default:
                 break;
         }
+        $this->afficher();
     }
 
     /**
@@ -26,31 +30,19 @@ class ListView extends View
      */
     private function showAll()
     {
-        echo "
-        <div>
-        <table border=\"2\">
-            <thead>
-            <tr>
-                <th>titre</th>
-                <th>description</th>
-            </tr>
-            </thead>
-            <tbody>\n ";
-        foreach ($this->res as $liste) {
-            echo "<tr>\n<td><a href='/list/$liste->token'>$liste->titre</a></td>\n<td>$liste->description</td>\n</tr>\n";
+        foreach ($this->res as $list) {
+            $this->content.= "<p><a href='/list/$list->token'>$list->titre</a></p>\n";
         }
-        echo "            </tbody>
-               </table>
-         </div>";
+        $this->title='Les Listes';
     }
 
     /**
      * Affiche une liste en particulier en récupérant son token depuis l'URL
      */
-    private function showList()
+/*    private function showList()
     {
         //liste
-        echo "
+        $this->content.="
         <div>
         <table border=\"2\">
             <thead>
@@ -61,10 +53,10 @@ class ListView extends View
             </thead>
             <tbody>\n ";
         $liste = $this->res[0];
-        echo "            <tr>\n";
-        echo "<tr>\n<td>$liste->titre</td>\n<td>$liste->description</td>\n</tr>\n";
+        $this->content.= "            <tr>\n";
+        $this->content.= "<tr>\n<td>$liste->titre</td>\n<td>$liste->description</td>\n</tr>\n";
 
-        echo "            </tbody>
+        $this->content.= "            </tbody>
                </table>
          </div>";
 
@@ -72,7 +64,7 @@ class ListView extends View
         $items = $this->res[1];
         //<th>id</th>
         //                <th>liste id</th>
-        echo "
+        $this->content.= "
         <div>
         <table border=\"2\">
             <thead>
@@ -84,17 +76,43 @@ class ListView extends View
             </thead>
             <tbody> ";
         foreach ($items as $item){
-            //echo "<pre>var_dump($item)</pre>";
-            echo "<tr>";
-            echo "<td><a href='/item/$item->id'>$item->nom</a></td>\n";
-            echo "<td><img src=\"\\img\\" .$item->img."\" height=\"50\"/></td>\n";
-            echo "<td>$item->tarif</td>\n";
-            echo "</tr>";
+            $this->content.= "<tr>";
+            $this->content.= "<td><a href='/item/$item->id'>$item->nom</a></td>\n";
+            $this->content.= "<td><img src=\"\\img\\" .$item->img."\" height=\"50\"/></td>\n";
+            $this->content.= "<td>$item->tarif</td>\n";
+            $this->content.= "</tr>";
         }
-        echo "</tbody>
+        $this->content.= "</tbody>
         </table>
     </div>";
 
-    }
+    }*/
 
+    private function showList()
+    {
+        //liste
+        $liste = $this->res[0];
+        $this->content.= "
+            <p class='titre'>$liste->titre</p>\n
+            <p>$liste->description</p>\n";
+
+
+
+
+        // liste d'item
+        $items = $this->res[1];
+        $this->content.= "<table><thead><tr>
+                <th>nom</th>
+                <th>image</th>
+                <th>tarif</th>
+            </tr></thead><tbody> ";
+        foreach ($items as $item){
+            $this->content.= "<tr>";
+            $this->content.= "<td><a href='/item/$item->id'>$item->nom</a></td>\n";
+            $this->content.= "<td><img src=\"\\img\\" .$item->img."\" height=\"50\"/></td>\n";
+            $this->content.= "<td>$item->tarif</td>\n";
+            $this->content.= "</tr>";
+        }
+        $this->content.= "</tbody></table>";
+    }
 }

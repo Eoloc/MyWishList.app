@@ -2,8 +2,8 @@
     session_start();
 
     use Slim\App;
-use wishlist\controllers\ItemController;
-use wishlist\controllers\ListController;
+    use wishlist\controllers\ItemController;
+    use wishlist\controllers\ListController;
     use wishlist\controllers\PagesController;
     use wishlist\models\Database;
     use \Psr\Http\Message\ServerRequestInterface as Request;
@@ -40,6 +40,17 @@ use wishlist\controllers\ListController;
         $response->write($image);
         return $response->withHeader('Content-Type', FILEINFO_MIME_TYPE);
     })->setName('img');
+
+$app->get('/css/{data}', function (Request $request, Response $response, array $args){
+    $data = $args['data'];
+    $style = @file_get_contents("src/$data");
+    if ($style === FALSE) {
+        $handler = $this->notFoundHandler;
+        return $handler($request, $response);
+    }
+    $response->write($style);
+    return $response->withHeader('Content-Type', FILEINFO_MIME_TYPE);
+})->setName('css');
 
 
     $app->get('/', function (Request $request, Response $response, array $args) use ($app) {
