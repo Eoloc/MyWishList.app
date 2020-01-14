@@ -78,10 +78,21 @@
         $cont->showItem($args['id']);
     })->setName('item.id');
 
-    $app->get('/item/{id}/modify', function (Request $request, Response $response, array $args) use ($app) {
+    $app->get('/item/{id}/modif', function (Request $request, Response $response, array $args) use ($app) {
         $cont = new ItemController($app);
-        $cont->modifyItem($args['id']);
-    })->setName('item.id.modify');
+        $cont->modifItem($args['id']);
+    })->setName('item.id.modif');
+
+    $app->get('/item/{id}/modif/valideModif', function (Request $request, Response $response, array $args) use ($app) {
+        $cont = new ItemController($app);
+        $cont->showItem($args['id']);
+    })->setName('item.id.modif.valide');
+
+    $app->post('/item/{id}/modif/valideModif', function ($request, $response, $args) use ($app) {
+        $cont = new ItemController($app);
+        $idItem = $cont->valideModif();
+        return $response->withRedirect("http://" . $request->getUri()->getHost() . "/item/" . $idItem);   // REDIRECTION
+    });
 
     $app->get('/item/{id}/reserve', function (Request $request, Response $response, array $args) use ($app) {
         $cont = new ItemController($app);

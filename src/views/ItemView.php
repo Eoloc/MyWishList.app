@@ -16,8 +16,8 @@ class ItemView extends View
             case 'showItem':
                 $this->showItem();
                 break;
-            case 'modifyItem':
-                $this->modifyItem();
+            case 'modifItem':
+                $this->modifItem();
                 break;
             case 'reserveItem':
                 $this->reserveItem();
@@ -50,44 +50,67 @@ class ItemView extends View
             echo "<td>$arr_item->url</td>\n";
             echo "<td>$arr_item->tarif</td>\n";
             echo "</tr>";
-        $adressModify = $_SERVER['HTTP_HOST'].$_SERVER["REDIRECT_URL"] . '/modify';
+        $adressModify = $_SERVER['HTTP_HOST'].$_SERVER["REDIRECT_URL"] . '/modif';
         $adressRes = $_SERVER['HTTP_HOST'].$_SERVER["REDIRECT_URL"] . '/reserve';
         echo "</tbody>
         </table>
-        <a href=\"http://$adressModify\"><button>Modifier</button></a>
+        <a href=\"http://$adressModify\"><button>Créer / Modifier</button></a>
         <a href=\"http://$adressRes\"><button>Reserver</button></a>
         </div>";
     }
 
-    private function modifyItem()
+    private function modifItem()
     {
         echo "
-        <head>
-            <meta charset=\"utf-8\">
-            <title>formulaire modifier item</title>
-            <form action=\"/item-attributs-php\" method=\"post\">
-            <div>
-                <label for=\"name\">Nom :</label>
-                <input type=\"text\" id=\"nom\" name=\"item_nom\">
-            </div>
-            <div>
-                <label for=\"descri\">Description :</label>
-                <textarea id=\"descrip\" name=\"item_description\"></textarea>
-            </div>
-            <div>
-                <label for=\"url\">URL :</label>
-                <input type=\"text\" id=\"url\" name=\"item_url\">
-            </div>
-            <div>
-                <label for=\"tarif\">Prix Unitaire :</label>
-                <input type=\"text\" id=\"tarif\" name=\"item_tarif\">
-             </div>
-            <input type=\"button\" value=\"Modifier\">
-            <input type=\"button\" value=\"Modifier l'image\">
-            <input type=\"button\" value=\"Annuler\">
-            </form>
-        </head>
-        <body></body>
+        <form class=\"form-horizontal\" method='post' action='modif/valideModif'>
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend>Créer / Modifier l'objet</legend>
+        
+        <!-- Text input-->
+        <div class=\"form-group\">
+          <label class=\"col-md-4 control-label\" for=\"nom\">Nom</label>  
+          <div class=\"col-md-4\">
+          <input id=\"nom\" name=\"nom\" type=\"text\" placeholder=\"\" class=\"form-control input-md\" required=\"\">
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class=\"form-group\">
+          <label class=\"col-md-4 control-label\" for=\"liste_id\">Liste</label>  
+          <div class=\"col-md-4\">
+          <input id=\"liste_id\" name=\"liste_id\" type=\"text\" placeholder=\"0 pour aucune liste\" class=\"form-control input-md\" required=\"\">
+          </div>
+        </div>
+        
+        <!-- Textarea -->
+        <div class=\"form-group\">
+          <label class=\"col-md-4 control-label\" for=\"description\">Description</label>
+          <div class=\"col-md-4\">                     
+            <textarea class=\"form-control\" id=\"description\" name=\"description\"></textarea>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class=\"form-group\">
+          <label class=\"col-md-4 control-label\" for=\"prix\">Prix unitaire</label>  
+          <div class=\"col-md-4\">
+          <input id=\"prix\" name=\"prix\" type=\"text\" placeholder=\"\" class=\"form-control input-md\" required=\"\">
+          </div>
+        </div>
+        
+        <!-- Button (Double) -->
+        <div class=\"form-group\">
+          <label class=\"col-md-4 control-label\" for=\"buttonmodif\"></label>
+          <div class=\"col-md-8\">
+            <button id=\"buttonmodif\" name=\"buttonmodif\" class=\"btn btn-success\">Créer / Modifier</button>
+            <button id=\"buttonmodifann\" name=\"buttonmodifann\" class=\"btn btn-danger\">Annuler</button>
+          </div>
+        </div>
+        
+        </fieldset>
+        </form>
         ";
 
         // A INSERER DANS LA BDD
