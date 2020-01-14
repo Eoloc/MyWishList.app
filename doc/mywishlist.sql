@@ -56,8 +56,7 @@ DROP TABLE IF EXISTS `reservation`;
 CREATE TABLE reservation
 (
     reservation_id int NOT NULL,
-    no int(11),
     pseudo VARCHAR(30),
-    PRIMARY KEY (reservation_id),
-    FOREIGN KEY (no) REFERENCES liste (no)
+    message text COLLATE utf8_unicode_ci,
+    PRIMARY KEY (reservation_id)
 );
