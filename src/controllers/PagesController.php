@@ -6,7 +6,7 @@ namespace wishlist\controllers;
 
 use wishlist\views\PagesView;
 
-class PagesController
+class PagesController extends Controller
 {
 
     /**

@@ -2,7 +2,6 @@
 
 
 namespace wishlist\controllers;
-use Slim\App;
 use wishlist\models\Liste;
 use wishlist\models\Item;
 use wishlist\views\ListView;
@@ -11,7 +10,7 @@ use wishlist\views\ListView;
  * Classe du Controller de liste.
  * @package wishlist\controllers
  */
-class ListController
+class ListController extends Controller
 {
 
     public function showAll(){

@@ -7,16 +7,8 @@ namespace wishlist\controllers;
 use wishlist\models\Item;
 use wishlist\views\ItemView;
 
-class ItemController
+class ItemController extends Controller
 {
-
-    /**
-     * ItemController constructor.
-     */
-    public function __construct()
-    {
-    }
-
     public function showItem($id)
     {
         $i = Item::select('*')->where('id', '=', "$id")->get();
@@ -40,4 +32,5 @@ class ItemController
         $vue = new ItemView($i);
         $vue->views('reserveItem');
     }
+
 }
