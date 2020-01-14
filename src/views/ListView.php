@@ -87,8 +87,7 @@ END;
 <div class="form-group">
   <label class="col-md-4 control-label" for="title">Titre</label>  
   <div class="col-md-4">
-  <input id="title" name="title" type="text" placeholder="Le nom de la liste" class="form-control input-md">
-    
+  <input id="title" name="title" type="text" placeholder="Le nom de la liste" class="form-control input-md" required>
   </div>
 </div>
 
@@ -104,7 +103,7 @@ END;
 <div class="form-group">
     <label class="col-md-4 control-label" for="desc">Date d'expiration</label>
     <div class="col-md-4">      
-        <input type="date" name="date">
+        <input type="date" name="date" required>
     </div>
 </div>
 

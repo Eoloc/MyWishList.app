@@ -45,11 +45,10 @@ class ListController extends Controller
         filter_var_array($name, FILTER_SANITIZE_SPECIAL_CHARS);
             if ($name['title'] != null && $name['date'] != null) {
                 $r = new Liste();
-                $r->titre = $name['title'];
-                $r->description = $name['desc'];
+                $r->titre = strip_tags($name['title']);
+                $r->description = strip_tags($name['desc']);
                 $r->expiration = $name['date'];
                 $r->token = sha1(mt_rand(1, 90000) . 'SALT');
-                echo $r->token;
                 $r->save();
             }
     }
