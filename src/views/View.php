@@ -40,7 +40,6 @@ abstract class View
         $this->nav=[
             '<li><a href="/">Accueil</a></li>',
             '<li><a href="/list">Mes listes</a></li>',
-            '<li><a href="/contact">Contact</a></li>',
             '<li><a href="/about">A propos</a></li>'
         ];
     }
@@ -73,7 +72,6 @@ abstract class View
             {$this->nav[0]}
             {$this->nav[1]}
             {$this->nav[2]}
-            {$this->nav[3]}
         </ul>
     </nav>
     <div id='center'>
