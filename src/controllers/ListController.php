@@ -55,4 +55,10 @@ class ListController extends Controller
         }
     }
 
+    public function showLink()
+    {
+        $vue = new ListView();
+        $vue->views('link');
+    }
+
 }

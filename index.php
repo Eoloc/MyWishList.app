@@ -73,6 +73,11 @@
         $cont->showList($args['token']);
     })->setName('list.token');
 
+    $app->get('/list/{token}/share', function (Request $request, Response $response, array $args) use ($app) {
+        $cont = new ListController($app);
+        $cont->showLink();
+    })->setName('list.token');
+
     $app->get('/item/{id}', function (Request $request, Response $response, array $args) use ($app) {
         $cont = new ItemController($app);
         $cont->showItem($args['id']);
