@@ -14,7 +14,7 @@ https://trello.com/b/1g3hFma0/
 - SOUSA Alexandre ([Eoloc](https://github.com/Eoloc/MyWishList.app/commits?author=Eoloc))
 - CONTE Nunzio ([NunzioArdi](https://github.com/Eoloc/MyWishList.app/commits?author=NunzioArdi))
 - MATHIEU Jean ([Kyouis](https://github.com/Eoloc/MyWishList.app/commits?author=Kyouis))
-- JIN Liyao
+- JIN Liyao ([jlyhs777](https://github.com/Eoloc/MyWishList.app/commits?author=jlyhs777))
 
 ## Installation
 
@@ -25,5 +25,5 @@ pour se connecter a la base
 
 | Programme | Version |
 | :----: | --- |
-| PHP | 7.0.00 |
+| PHP | 7.4.00 |
 | MySQL | min 5.0.12 |
