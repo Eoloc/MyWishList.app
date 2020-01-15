@@ -16,6 +16,9 @@ class ItemView extends View
             case 'showItem':
                 $this->showItem();
                 break;
+            case 'noModifItem':
+                $this->noModifItem();
+                break;
             case 'modifItem':
                 $this->modifItem();
                 break;
@@ -47,10 +50,37 @@ class ItemView extends View
         $this->content.= "<a href=\"http://$adressRes\"><button>Reserver</button></a>";
     }
 
+    private function noModifItem()
+    {
+        $this->content.= <<<END
+        <form class="form-horizontal" method='post' action='return'>
+        <fieldset>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="retourmodif"></label>
+          <div class="col-md-4">
+          <p>Impossible de modifier cet item, il a été reservé</p>
+            <button id="retourmodif" name="retourmodif" class="btn btn-primary">Retour</button>
+          </div>
+        </div>
+        
+        </fieldset>
+        </form>
+        
+
+END;
+    }
+
     private function modifItem()
     {
-        $arr_item = $this->res[0];
-        $this->title="Modifier: $arr_item->nom";
+        if(!isset($this->res)) {
+            $arr_item = $this->res[0];
+            $this->title="Modifier: $arr_item->nom";
+        } else {
+            $this->title="Créer un item";
+        }
+
 
         $this->content.= <<<END
         <form class="form-horizontal" method='post' action='modif/valideModif' enctype="multipart/form-data">
@@ -61,25 +91,25 @@ class ItemView extends View
         
         <!-- Text input-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="nom">Nom</label>  
-          <div class="col-md-4">
+          <label class="col-md-4 control-label" for="nom">Nom : </label>  
           <input id="nom" name="nom" type="text" placeholder="" class="form-control input-md" required="">
+          <div class="col-md-4">
           <span class="help-block">Mettre le même nom de l'item pour le modifier</span>  
           </div>
         </div>
         
         <!-- Text input-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="liste">Liste</label>  
-          <div class="col-md-4">
+          <label class="col-md-4 control-label" for="liste">Liste : </label>  
           <input id="liste" name="liste" type="text" placeholder="numéro de la liste" class="form-control input-md" required="">
+          <div class="col-md-4">
           <span class="help-block">0 pour aucune liste</span>  
           </div>
         </div>
         
         <!-- Textarea -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="description">Description</label>
+          <label class="col-md-4 control-label" for="description">Description : </label>
           <div class="col-md-4">                     
             <textarea class="form-control" id="description" name="description"></textarea>
           </div>
@@ -88,17 +118,17 @@ class ItemView extends View
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="prix">Prix unitaire</label>  
-          <div class="col-md-4">
+          
           <input id="prix" name="prix" type="text" placeholder="" class="form-control input-md" required="">
-          </div>
+
         </div>
         
         <!-- File Button --> 
         <div class="form-group">
           <label class="col-md-4 control-label" for="boutonimage">Nouvelle image</label>
-          <div class="col-md-4">
+          
             <input id="boutonimage" name="boutonimage" class="input-file" type="file">
-          </div>
+
         </div>
         
         <!-- Button (Double) -->
@@ -117,8 +147,6 @@ class ItemView extends View
         
 
 END;
-
-        // A INSERER DANS LA BDD
     }
 
     private function reserveItem()

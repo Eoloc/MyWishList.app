@@ -99,6 +99,12 @@
         return $response->withRedirect("http://" . $request->getUri()->getHost() . "/item/" . $idItem);   // REDIRECTION
     });
 
+    $app->post('/item/{id}/return', function ($request, $response, $args) use ($app) {
+        $cont = new ItemController($app);
+        $cont->showItem($args['id']);
+        return $response->withRedirect("http://" . $request->getUri()->getHost() . "/item/" . $args['id']);   // REDIRECTION
+    });
+
     $app->get('/item/{id}/reserve', function (Request $request, Response $response, array $args) use ($app) {
         $cont = new ItemController($app);
         $cont->reserveItem($args['id']);
@@ -120,6 +126,7 @@
         $cont->confirmCreate($request);
         return $response->withRedirect("http://" . $request->getUri()->getHost() . "/list");  // REDIRECTION
     });
+
 
 
     //Execution
