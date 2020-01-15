@@ -55,7 +55,7 @@ END;
     private function about()
     {
         $this->content.="<p>Code source <a href='https://github.com/Eoloc/MyWishList.app/'>MyWishList.app</a> 
-            et toutes les autre informations</p>";
+            et toutes les autres informations</p>";
     }
 
 
