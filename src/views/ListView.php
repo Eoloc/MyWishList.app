@@ -33,12 +33,14 @@ class ListView extends View
      */
     private function showAll()
     {
+        $this->content.= "<table id='customers'><tbody>";
         foreach ($this->res as $list) {
-            $this->content.= "<p><a href='/list/$list->token'>$list->titre</a></p>\n";
+            $this->content.= "<tr><td><a href='/list/$list->token'>$list->titre</a></td></tr>\n";
         }
         $this->title='Les Listes';
 
         $adressModify = $_SERVER['HTTP_HOST'].$_SERVER["REDIRECT_URL"] . '/create';
+        $this->content.= "</tbody></table>";
         $this->content .= <<<END
 <a href="http://$adressModify"><button>Créer un liste</button></a>
 END;
@@ -60,7 +62,7 @@ END;
 
         // liste d'item
         $items = $this->res[1];
-        $this->content.= "<table><thead><tr>
+        $this->content.= "<table id=\"customers\"><thead><tr>
                 <th>nom</th>
                 <th>image</th>
                 <th>tarif</th>
