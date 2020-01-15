@@ -66,22 +66,50 @@ END;
 
         // liste d'item
         $items = $this->res[1];
+        $reserves = $this->res[2];
         $this->content.= "<table id=\"customers\"><thead><tr>
                 <th>nom</th>
                 <th>image</th>
                 <th>tarif</th>
+                <th>Reserver</th>
+                <th>Pseudo</th>
+                <th>Commentaire</th>
             </tr></thead><tbody> ";
         foreach ($items as $item){
+            $vrai = false;
             $this->content.= "<tr>";
             $this->content.= "<td><a href='/item/$item->id'>$item->nom</a></td>\n";
             $this->content.= "<td><img src=\"\\img\\" .$item->img."\" height=\"50\"/></td>\n";
             $this->content.= "<td>$item->tarif</td>\n";
+            foreach ($reserves as $reserve) {
+                if($reserve->reservation_id == $item->id) {
+                    $vrai = true;
+                    break;
+                }
+            }
+            if($vrai) {
+                $this->content.= "<td>Oui</td>\n";
+            } else {
+                $this->content.= "<td>Non</td>\n";
+            }
+            if($vrai) {
+                $this->content.= "<td>$reserve->pseudo</td>\n";
+            } else {
+                $this->content.= "<td></td>\n";
+            }
+            if($vrai) {
+                $this->content.= "<td>$reserve->message</td>\n";
+            } else {
+                $this->content.= "<td></td>\n";
+            }
             $this->content.= "</tr>";
         }
+
+
         $this->content.= "</tbody></table>";
         $adress = $_SERVER['HTTP_HOST'] . '/item/0/modif';
-        $this->content.= "<a href=\"http://$adress\"><button>Ajouter item</button></a>";
-        $this->content.= "<a href=\"http://{$_SERVER['HTTP_HOST']}{$_SERVER["REDIRECT_URL"]}/share \"><button>Partager la liste</button></a>";
+        $this->content.= "<div class='boutonliste'><a href=\"http://$adress\"><button>Ajouter item</button></a>";
+        $this->content.= "<a href=\"http://{$_SERVER['HTTP_HOST']}{$_SERVER["REDIRECT_URL"]}/share \"><button>Partager la liste</button></a></div>";
     }
 
     private function create()

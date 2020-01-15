@@ -5,6 +5,7 @@ namespace wishlist\controllers;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use wishlist\models\Liste;
 use wishlist\models\Item;
+use wishlist\models\Reserve;
 use wishlist\views\ListView;
 
 /**
@@ -27,7 +28,11 @@ class ListController extends Controller
         $l = json_decode($l);
         $items = Item::select('*')->where('liste_id', '=', $l[0]->no)->get();
         $items = json_decode($items);
-        array_push($l, $items);
+        //var_dump($items);
+        $reserves = Reserve::select('*')->get();
+        $reserves = json_decode($reserves);
+        array_push($l, $items, $reserves);
+        var_dump($reserves);
         $arr = $l;
         $vue = new ListView($arr);
         $vue->views('showList');
