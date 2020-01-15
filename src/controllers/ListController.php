@@ -42,7 +42,8 @@ class ListController extends Controller
     public function confirmCreate(Request $request)
     {
         $name = $request->getParsedBody();
-        filter_var_array($name, FILTER_SANITIZE_SPECIAL_CHARS);
+        if (isset($name['valide1'])) {
+            filter_var_array($name, FILTER_SANITIZE_SPECIAL_CHARS);
             if ($name['title'] != null && $name['date'] != null) {
                 $r = new Liste();
                 $r->titre = strip_tags($name['title']);
@@ -51,6 +52,7 @@ class ListController extends Controller
                 $r->token = sha1(mt_rand(1, 90000) . 'SALT');
                 $r->save();
             }
+        }
     }
 
 }

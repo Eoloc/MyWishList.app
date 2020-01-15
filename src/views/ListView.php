@@ -81,49 +81,49 @@ END;
     {
 
         $this->content.=<<<END
-<form class="form-horizontal" action="/list/create/confirm" method="post">
-<fieldset>
-
-<!-- Form Name -->
-<legend>Création d'une liste</legend>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="title">Titre</label>  
-  <div class="col-md-4">
-  <input id="title" name="title" type="text" placeholder="Le nom de la liste" class="form-control input-md" required>
-  </div>
-</div>
-
-<!-- Textarea -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="desc">Description</label>
-  <div class="col-md-4">                     
-    <textarea class="form-control" id="desc" name="desc">La description de la liste</textarea>
-  </div>
-</div>
-
-<!-- Date -->
-<div class="form-group">
-    <label class="col-md-4 control-label" for="desc">Date d'expiration</label>
-    <div class="col-md-4">      
-        <input type="date" name="date" required>
-    </div>
-</div>
-
-<!-- Button (Double) -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="button1id">confirm</label>
-  <div class="col-md-8">
-    <button id="button1id" name="button1id" class="btn btn-success">Validée</button>
-    <button id="cancel" name="cancel" class="btn btn-danger">Annuler</button>
-  </div>
-</div>
-
-
-
-</fieldset>
-</form>
+        <form class="form-horizontal" action="/list/create/confirm" method="post">
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend>Création d'une liste</legend>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="title">Titre</label>  
+          <div class="col-md-4">
+          <input id="title" name="title" type="text" placeholder="Le nom de la liste" class="form-control input-md" required>
+          </div>
+        </div>
+        
+        <!-- Textarea -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="desc">Description</label>
+          <div class="col-md-4">                     
+            <textarea class="form-control" id="desc" name="desc">La description de la liste</textarea>
+          </div>
+        </div>
+        
+        <!-- Date -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="desc">Date d'expiration</label>
+            <div class="col-md-4">      
+                <input type="date" name="date" required>
+            </div>
+        </div>
+        
+        <!-- Button (Double) -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="button1id">confirm</label>
+          <div class="col-md-8">
+            <button id="valide1" name="valide1" class="btn btn-success">Valider</button>
+            <button id="cancel" name="cancel" class="btn btn-danger">Annuler</button>
+          </div>
+        </div>
+        
+        
+        
+        </fieldset>
+        </form>
 
 
 END;
