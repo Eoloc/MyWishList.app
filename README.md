@@ -6,7 +6,7 @@ Projet PHP réalisé dans le cadre de la formation du DUT Informatique 2019-2020
 ## Trello
 
 Une carte trello est accessible pour voir l'avancement du projet, quelles personnes occupent quelles tâches.
-https://trello.com/b/1g3hFma0/
+https://trello.com/b/1g3hFma0/mywishlistapp
 
 
 ## Contributeur
