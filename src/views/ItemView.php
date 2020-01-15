@@ -33,13 +33,13 @@ class ItemView extends View
         $arr_item = $this->res[0];
         $this->title=$arr_item->nom;
 
-        $this->content.="<p>$arr_item->nom</p>\n";
-        $this->content.= "<p>$arr_item->descr</p>\n";
+        $this->content.="<p>Nom : $arr_item->nom</p>\n";
+        $this->content.= "<p>Description : $arr_item->descr</p>\n";
         $this->content.= "<img src=\"\\img\\" .$arr_item->img."\" height=\"50\"/>\n";
         if($arr_item->url!=NULL){
             $this->content.="<p><a href=\"$arr_item->url\">Lien</a></p>\n";
         }
-        $this->content.="<p>$arr_item->tarif</p>\n";
+        $this->content.="<p>Tarif : $arr_item->tarif</p>\n";
 
         $adressModify = $_SERVER['HTTP_HOST'].$_SERVER["REDIRECT_URL"] . '/modif';
         $adressRes = $_SERVER['HTTP_HOST'].$_SERVER["REDIRECT_URL"] . '/reserve';
@@ -53,7 +53,7 @@ class ItemView extends View
         $this->title="Modifier: $arr_item->nom";
 
         $this->content.= <<<END
-        <form class="form-horizontal" method='post' action='modif/valideModif'>
+        <form class="form-horizontal" method='post' action='modif/valideModif' enctype="multipart/form-data">
         <fieldset>
         
         <!-- Form Name -->
@@ -90,12 +90,31 @@ class ItemView extends View
           <label class="col-md-4 control-label" for="prix">Prix unitaire</label>  
           <div class="col-md-4">
           <input id="prix" name="prix" type="text" placeholder="" class="form-control input-md" required="">
-            
           </div>
         </div>
         
+        <!-- File Button --> 
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="boutonimage">Nouvelle image</label>
+          <div class="col-md-4">
+            <input id="boutonimage" name="boutonimage" class="input-file" type="file">
+          </div>
+        </div>
+        
+        <!-- Button (Double) -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="buttonmodif"></label>
+          <div class="col-md-8">
+            <button id="buttonmodif" name="buttonmodif" class="btn btn-success">Créer / Modifier</button>
+            <button id="buttonmodifannuler" name="buttonmodifannuler" class="btn btn-danger">Annuler</button>
+          </div>
+        </div>
+        
+        
+        
         </fieldset>
         </form>
+        
 
 END;
 
