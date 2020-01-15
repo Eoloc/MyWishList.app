@@ -13,14 +13,17 @@ class ListView extends View
     public function views(string $view)
     {
         switch ($view) {
-            case 'showAll';
+            case 'showAll':
                 $this->showAll();
                 break;
-            case 'showList';
+            case 'showList':
                 $this->showList();
                 break;
-            case 'create';
+            case 'create':
                 $this->create();
+                break;
+            case 'link':
+                $this->showLink();
                 break;
             default:
                 break;
@@ -42,7 +45,7 @@ class ListView extends View
         $adressModify = $_SERVER['HTTP_HOST'].$_SERVER["REDIRECT_URL"] . '/create';
         $this->content.= "</tbody></table>";
         $this->content .= <<<END
-<a href="http://$adressModify"><button>Créer un liste</button></a>
+<a      href="http://$adressModify"><button>Créer un liste</button></a>
 END;
     }
 
@@ -78,6 +81,7 @@ END;
         $this->content.= "</tbody></table>";
         $adress = $_SERVER['HTTP_HOST'] . '/item/1/modif';
         $this->content.= "<a href=\"http://$adress\"><button>Ajouter item</button></a>";
+        $this->content.= "<a href=\"http://{$_SERVER['HTTP_HOST']}{$_SERVER["REDIRECT_URL"]}/share \"><button>Partager la liste</button></a>";
     }
 
     private function create()
@@ -130,5 +134,13 @@ END;
 
 END;
 
+    }
+
+    /**
+     * Affiche le lien de la liste
+     */
+    private function showLink()
+    {
+        $this->content.= $_SERVER["HTTP_REFERER"];
     }
 }
