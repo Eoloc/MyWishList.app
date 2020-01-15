@@ -42,7 +42,7 @@ class ListView extends View
         $adressModify = $_SERVER['HTTP_HOST'].$_SERVER["REDIRECT_URL"] . '/create';
         $this->content.= "</tbody></table>";
         $this->content .= <<<END
-<a href="http://$adressModify"><button>Créer un liste</button></a>
+<a href="http://$adressModify"><button>Créer une liste</button></a>
 END;
     }
 

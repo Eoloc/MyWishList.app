@@ -7,6 +7,8 @@ namespace wishlist\controllers;
 use wishlist\models\Item;
 use wishlist\models\Reserve;
 use wishlist\views\ItemView;
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
 
 class ItemController extends Controller
 {
@@ -20,10 +22,11 @@ class ItemController extends Controller
 
     public function modifItem($id)
     {
+        $r = Reserve::where('reservation_id', '=', $id)->first();
         $i = Item::select('*')->where('id', '=', "$id")->get();
         $i = json_decode($i);
         $vue = new ItemView($i);
-        $vue->views('modifItem');
+        
     }
 
     public function valideModif($id)
@@ -34,10 +37,16 @@ class ItemController extends Controller
                 $i = new Item();
             }
             if (isset($_POST['buttonmodif'])) {
-                $i->liste_id = filter_var($_POST['liste_id'], FILTER_SANITIZE_SPECIAL_CHARS);
+                $i->img = '';
+                if(isset($_FILES["boutonimage"]["name"])) {  // L'image ne se supprime pas en local
+                    $chemin = "src/img/". basename($_FILES["boutonimage"]["name"]);
+                    $nomFile = basename($_FILES["boutonimage"]["name"]);
+                    move_uploaded_file( $_FILES['boutonimage']['tmp_name'], $chemin);
+                    $i->img = filter_var($nomFile, FILTER_SANITIZE_SPECIAL_CHARS);
+                }
+                $i->liste_id = filter_var($_POST['liste'], FILTER_SANITIZE_SPECIAL_CHARS);
                 $i->nom = filter_var($_POST['nom'], FILTER_SANITIZE_SPECIAL_CHARS);
                 $i->descr = filter_var($_POST['description'], FILTER_SANITIZE_SPECIAL_CHARS);
-                $i->img = '';
                 $i->url = '';
                 $i->tarif = filter_var($_POST['prix'], FILTER_SANITIZE_SPECIAL_CHARS);
                 $i->save();
