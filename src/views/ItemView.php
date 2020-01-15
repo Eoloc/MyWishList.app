@@ -149,6 +149,5 @@ END;
         </fieldset>
         </form>
 END;
-        //INSERER DANS LA BDD
     }
 }

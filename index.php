@@ -90,7 +90,7 @@
 
     $app->post('/item/{id}/modif/valideModif', function ($request, $response, $args) use ($app) {
         $cont = new ItemController($app);
-        $idItem = $cont->valideModif();
+        $idItem = $cont->valideModif($args['id']);
         return $response->withRedirect("http://" . $request->getUri()->getHost() . "/item/" . $idItem);   // REDIRECTION
     });
 

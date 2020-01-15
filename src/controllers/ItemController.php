@@ -26,14 +26,13 @@ class ItemController extends Controller
         $vue->views('modifItem');
     }
 
-    public function valideModif()
+    public function valideModif($id)
     {
         if(isset($_POST['nom'])) {
             $i = Item::where('nom', '=', $_POST['nom'])->first();
             if (is_null($i)) {
                 $i = new Item();
             }
-            var_dump($_POST);
             if (isset($_POST['buttonmodif'])) {
                 $i->liste_id = filter_var($_POST['liste_id'], FILTER_SANITIZE_SPECIAL_CHARS);
                 $i->nom = filter_var($_POST['nom'], FILTER_SANITIZE_SPECIAL_CHARS);
@@ -43,9 +42,11 @@ class ItemController extends Controller
                 $i->tarif = filter_var($_POST['prix'], FILTER_SANITIZE_SPECIAL_CHARS);
                 $i->save();
             }
-            return $i->id;
+            if($i->id != '') {
+                return $i->id;
+            }
         }
-        return null;
+        return $id;
     }
 
     public function reserveItem($id)
