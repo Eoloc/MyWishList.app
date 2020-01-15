@@ -26,7 +26,12 @@ class ItemController extends Controller
         $i = Item::select('*')->where('id', '=', "$id")->get();
         $i = json_decode($i);
         $vue = new ItemView($i);
-        
+        if (is_null($r)) {
+            $vue->views('modifItem');
+        }
+        else {
+            $vue->views('noModifItem');
+        }
     }
 
     public function valideModif($id)
