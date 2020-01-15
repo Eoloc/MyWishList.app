@@ -51,6 +51,8 @@ END;
     {
         //liste
         $liste = $this->res[0];
+        $this->title="$liste->titre";
+
         $this->content.= "
             <p class='titre'>$liste->titre</p>\n
             <p>$liste->description</p>\n";
