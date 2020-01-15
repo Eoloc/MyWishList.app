@@ -80,7 +80,7 @@ abstract class View
 $this->content
     </div>
     <footer>
-        @2020 Mathieu Sousa Jin Compte
+        @2020 Mathieu Sousa Jin Conte
     </footer>
 </body>
 </html>
