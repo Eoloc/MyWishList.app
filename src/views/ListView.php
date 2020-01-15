@@ -75,6 +75,8 @@ END;
             $this->content.= "</tr>";
         }
         $this->content.= "</tbody></table>";
+        $adress = $_SERVER['HTTP_HOST'] . '/item/1/modif';
+        $this->content.= "<a href=\"http://$adress\"><button>Ajouter item</button></a>";
     }
 
     private function create()
@@ -124,7 +126,6 @@ END;
         
         </fieldset>
         </form>
-
 
 END;
 
