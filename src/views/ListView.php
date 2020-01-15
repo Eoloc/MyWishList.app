@@ -57,8 +57,9 @@ END;
 
         $this->content.= "
             <p class='titre'>$liste->titre</p>\n
-            <p>$liste->description</p>\n";
-
+            <p>$liste->description</p>\n
+            <p>Numéro de la liste pour les items : $liste->no</p>
+            ";
 
         // liste d'item
         $items = $this->res[1];
@@ -130,6 +131,4 @@ END;
 END;
 
     }
-
-
 }

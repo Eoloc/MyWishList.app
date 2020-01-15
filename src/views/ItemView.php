@@ -63,22 +63,24 @@ class ItemView extends View
         <div class="form-group">
           <label class="col-md-4 control-label" for="nom">Nom</label>  
           <div class="col-md-4">
-          <input id="nom" name="nom" type="text" placeholder="" class="form-control input-md" required>
+          <input id="nom" name="nom" type="text" placeholder="" class="form-control input-md" required="">
+          <span class="help-block">Mettre le même nom de l'item pour le modifier</span>  
           </div>
         </div>
         
         <!-- Text input-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="liste_id">Liste</label>  
+          <label class="col-md-4 control-label" for="liste">Liste</label>  
           <div class="col-md-4">
-          <input id="liste_id" name="liste_id" type="text" placeholder="0 pour aucune liste" class="form-control input-md" required>
+          <input id="liste" name="liste" type="text" placeholder="numéro de la liste" class="form-control input-md" required="">
+          <span class="help-block">0 pour aucune liste</span>  
           </div>
         </div>
         
         <!-- Textarea -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="description">Description</label>
-          <div class="col-md-4">
+          <div class="col-md-4">                     
             <textarea class="form-control" id="description" name="description"></textarea>
           </div>
         </div>
@@ -87,21 +89,14 @@ class ItemView extends View
         <div class="form-group">
           <label class="col-md-4 control-label" for="prix">Prix unitaire</label>  
           <div class="col-md-4">
-          <input id="prix" name="prix" type="text" placeholder="" class="form-control input-md" required>
-          </div>
-        </div>
-        
-        <!-- Button (Double) -->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="buttonmodif"></label>
-          <div class="col-md-8">
-            <button id="buttonmodif" name="buttonmodif" class="btn btn-success">Créer / Modifier</button>
-            <button id="buttonmodifann" name="buttonmodifann" class="btn btn-danger">Annuler</button>
+          <input id="prix" name="prix" type="text" placeholder="" class="form-control input-md" required="">
+            
           </div>
         </div>
         
         </fieldset>
         </form>
+
 END;
 
         // A INSERER DANS LA BDD
