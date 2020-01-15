@@ -15,7 +15,9 @@ class PagesView extends View
             case 'index':
                 $this->index();
                 break;
-              
+            case 'about':
+                $this->about();
+                break;
             default:
                 break;
         }
@@ -48,6 +50,12 @@ END;
 
           //  "<p><a href=\"/test.php\" target=\"_self\">Page de test</a></p>";
         //echo "<a href=\"/list\">tableau de toutes les listes</a>";
+    }
+
+    private function about()
+    {
+        $this->content.="<p>Code source <a href='https://github.com/Eoloc/MyWishList.app/'>MyWishList.app</a> 
+            et toutes les autre informations</p>";
     }
 
 

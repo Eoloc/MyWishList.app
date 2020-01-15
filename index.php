@@ -53,17 +53,20 @@
     })->setName('css');
 
 
-    $app->get('/', function (Request $request, Response $response, array $args) use ($app) {
-        $cont = new PagesController($app);
-        $cont->index();
+$app->get('/', function () {
+        $cont = (new PagesController())->index();
     })->setName('index');
 
-    $app->get('/list', function (Request $request, Response $response, array $args) use ($app) {
-        $cont = new ListController($app);
+$app->get('/list', function (Request $request, Response $response) {
+        $cont = new ListController();
         $cont->showAll();
     })->setName('list.all');
 
-    $app->get('/list/create', function (Request $request, Response $response, array $args) use ($app) {
+    $app->get('/about', function () {
+        $cont = (new PagesController())->about();
+    })->setName('about');
+
+$app->get('/list/create', function (Request $request, Response $response, array $args) use ($app) {
         $cont = new ListController($app);
         $cont->createForm();
     })->setName('list.createForm');
