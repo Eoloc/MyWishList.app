@@ -32,7 +32,6 @@ class ListController extends Controller
         $reserves = Reserve::select('*')->get();
         $reserves = json_decode($reserves);
         array_push($l, $items, $reserves);
-        var_dump($reserves);
         $arr = $l;
         $vue = new ListView($arr);
         $vue->views('showList');
